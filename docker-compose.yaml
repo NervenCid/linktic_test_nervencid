@@ -1,0 +1,17 @@
+#Esto es un comentario
+
+#Para ejecutar este archivo:
+#   >docker-compose up
+
+#Definimos la version (En este caso '3' es OBLIGATORIO)
+version: '3'
+
+#Definimos los servicios que vamos a utilizar
+services:
+  # Servicio de NoSQL
+  mongo:
+    image: mongo
+    container_name: mongo_products
+    ports:
+      - "27017:27017"
+

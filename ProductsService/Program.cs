@@ -2,6 +2,22 @@ using Microsoft.OpenApi.Models;
 using ProductService.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
+using MongoDB.Driver;
+
+using Microsoft.AspNetCore.JsonPatch;
+
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson;
+
+BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
+
+// Configuración de MongoDB
+var mongoClient = new MongoClient("mongodb://localhost:27017");
+var database = mongoClient.GetDatabase("ProductsDb");
+var productsCollection = database.GetCollection<Product>("Products");
+
 var builder = WebApplication.CreateBuilder(args);
 
 // ----------------------------
@@ -17,8 +33,10 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+//Creamos la app
 var app = builder.Build();
 
+// Configuramos el redireccionamiento HTTPS
 app.UseHttpsRedirection();
 
 app.UseSwagger();
@@ -28,89 +46,65 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = "swagger"; // Acceso: /swagger
 });
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-
-var products = new List<Product>
-{
-    new() { Id = 1, Name = "Product A", Price = 10.99 },
-    new() { Id = 2, Name = "Product B", Price = 12.99 },
-    new() { Id = 3, Name = "Product C", Price = 15.99 }
-};
-
-/*
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");*/
 
 //Obtener todos los productos
-app.MapGet("/products", () =>
+app.MapGet("/products", async() =>
 {
 
+    var products = await productsCollection.Find(_ => true).ToListAsync();
     return Results.Ok(products);
     
 })
 .WithName("GetProducts");
 
 //Obtener un producto por ID
-app.MapGet("/product/{id:int}", (int id) =>
+app.MapGet("/product/{id:guid}", async(Guid id) =>
 {
-    var product = products.FirstOrDefault(p => p.Id == id);
+    var product = await productsCollection.Find(p => p._id == id).FirstOrDefaultAsync();
     return product is not null ? Results.Ok(product) : Results.NotFound();
     
 })
 .WithName("GetProductById");
 
 //Crear un nuevo producto
-app.MapPost("/product", (Product product) =>
+app.MapPost("/product", async(Product product) =>
 {
-    product.Id = products.Any() ? products.Max(p => p.Id) + 1 : 1;
-    products.Add(product);
-    return Results.Created($"/products/{product.Id}", product);
+    product._id = Guid.NewGuid(); // Asegura que el UUID sea único
+    await productsCollection.InsertOneAsync(product);
+    return Results.Created($"/products/{product._id}", product);
 })
 .WithName("CreateProduct");
 
 //Actualizar un producto por ID
-app.MapPut("/product/{id:int}", (int id, Product updatedProduct) =>
+app.MapPut("/product/{id:guid}", async (Guid id, Product updatedFields) =>
 {
-    var index = products.FindIndex(p => p.Id == id);
-    if (index == -1) return Results.NotFound();
+    var product = await productsCollection.Find(p => p._id == id).FirstOrDefaultAsync();
+    if (product is null) return Results.NotFound();
 
-    updatedProduct.Id = id;
-    products[index] = updatedProduct;
-    return Results.Ok(updatedProduct);
+    // Solo actualiza si el campo recibido es diferente del valor por defecto
+    if (!string.IsNullOrEmpty(updatedFields.Name))
+        product.Name = updatedFields.Name;
+    if (updatedFields.Price != 0)
+        product.Price = updatedFields.Price;
+    if (updatedFields.Stock != 0)
+        product.Stock = updatedFields.Stock;
+
+    var filter = Builders<Product>.Filter.Eq(p => p._id, id);
+    await productsCollection.ReplaceOneAsync(filter, product);
+
+    return Results.Ok(product);
+
 })
 .WithName("UpdateProduct");
 
 //Eliminar un producto por ID
-app.MapDelete("/product/{id:int}", (int id) =>
+app.MapDelete("/product/{id:guid}", async (Guid id) =>
 {
-    var product = products.FirstOrDefault(p => p.Id == id);
-    if (product is null) return Results.NotFound();
-
-    products.Remove(product);
+    var result = await productsCollection.DeleteOneAsync(p => p._id == id);
+    if (result.DeletedCount == 0) return Results.NotFound();
     return Results.NoContent();
 })
 .WithName("DeleteProduct");
 
 app.Run();
 
-/*
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
-*/

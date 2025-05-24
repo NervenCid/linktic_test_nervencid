@@ -1,9 +1,19 @@
-namespace ProductService.Models;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 
 //Este es el modelo del producto
-public class Product
+namespace ProductService.Models
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public double Price { get; set; }
+    public class Product
+    {
+
+        [BsonId]
+        public Guid _id { get; set; } = Guid.NewGuid();
+        //public int Id { get; set; }
+        public string Name { get; set; } = "";
+        public double Price { get; set; }
+        public int Stock { get; set; }
+
+    }
 }

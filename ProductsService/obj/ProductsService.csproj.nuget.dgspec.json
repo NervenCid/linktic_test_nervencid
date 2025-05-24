@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\Solucion\\ProductsService\\ProductsService.csproj": {}
+    "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\linktic_test_nervencid\\ProductsService\\ProductsService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\Solucion\\ProductsService\\ProductsService.csproj": {
+    "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\linktic_test_nervencid\\ProductsService\\ProductsService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\Solucion\\ProductsService\\ProductsService.csproj",
+        "projectUniqueName": "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\linktic_test_nervencid\\ProductsService\\ProductsService.csproj",
         "projectName": "ProductsService",
-        "projectPath": "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\Solucion\\ProductsService\\ProductsService.csproj",
+        "projectPath": "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\linktic_test_nervencid\\ProductsService\\ProductsService.csproj",
         "packagesPath": "C:\\Users\\nerve\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\Solucion\\ProductsService\\obj\\",
+        "outputPath": "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\linktic_test_nervencid\\ProductsService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,9 +51,17 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.JsonPatch": {
+              "target": "Package",
+              "version": "[9.0.5, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.5, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.4.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
