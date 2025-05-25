@@ -9,9 +9,13 @@ namespace InventoryService.Controllers
     {
         public static void RegisterEndpoints(WebApplication app)
         {
-            app.MapGet("/stock/{id:guid}", async (Guid id, IInventoryRepository repository) =>
+            app.MapGet("/stock/{id:guid}", async (Guid id, IInventoryRepository repository, HttpContext context) =>
             {
-                var product = await repository.GetProductByIdAsync(id);
+
+                // Leer el API Key del request entrante
+                var apiKey = context.Request.Headers["X-API-KEY"].FirstOrDefault();
+                        
+                var product = await repository.GetProductByIdAsync(id, apiKey);
                 if (product is null)
                     return Results.NotFound();
 
@@ -21,9 +25,12 @@ namespace InventoryService.Controllers
             .WithSummary("Consulta el stock disponible de un producto.")
             .WithDescription("Obtiene la cantidad disponible en inventario de un producto específico por su identificador único (GUID). Retorna NotFound si el producto no existe.");
 
-            app.MapPost("/buy/{id:guid}", async (Guid id, BuyRequest buyRequest, IInventoryRepository repository) =>
+            app.MapPost("/buy/{id:guid}", async (Guid id, BuyRequest buyRequest, IInventoryRepository repository, HttpContext context) =>
             {
-                var product = await repository.GetProductByIdAsync(id);
+                // Leer el API Key del request entrante
+                var apiKey = context.Request.Headers["X-API-KEY"].FirstOrDefault();
+
+                var product = await repository.GetProductByIdAsync(id, apiKey);
                 if (product is null)
                     return Results.NotFound();
 
@@ -32,7 +39,7 @@ namespace InventoryService.Controllers
 
                 product.Stock -= buyRequest.Quantity;
 
-                var success = await repository.UpdateProductAsync(product);
+                var success = await repository.UpdateProductAsync(product, apiKey);
                 if (!success)
                     return Results.StatusCode(500);
 

@@ -6,7 +6,7 @@ namespace InventoryService.Repositories
 {
     public interface IInventoryRepository
     {
-        Task<Product?> GetProductByIdAsync(Guid id);
-        Task<bool> UpdateProductAsync(Product product);
+        Task<Product?> GetProductByIdAsync(Guid id, string? apiKey = null);
+        Task<bool> UpdateProductAsync(Product product, string? apiKey = null);
     }
 }
