@@ -125,12 +125,12 @@ X-API-KEY: key_test_local
 - **Controller/Endpoint Registration:** Organización de endpoints en clases estáticas tipo controlador.
 - **Modelos:** Uso de clases de modelo (`Product`, `BuyRequest`) para representar y transferir datos entre servicios y capas.
 
+---
+
 ## Arquitectura
 
 Cada microservicio (ProductsService e InventoryService) sigue principalmente una **arquitectura de capas simple** dentro del contexto de microservicios.  
-Esto se observa en la separación de responsabilidades y organización interna de cada uno:
-
----
+El enfoque de responsabilidades y organización interna de cada microservicio uno:
 
 ### **ProductsService**
 - **Capa de Presentación:**  
@@ -142,7 +142,6 @@ Esto se observa en la separación de responsabilidades y organización interna d
 - **Modelos:**  
   Clases como `Product` definen la estructura de los datos.
 
----
 
 ### **InventoryService**
 - **Capa de Presentación:**  
