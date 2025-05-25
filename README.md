@@ -164,7 +164,9 @@ Cada microservicio implementa una **arquitectura de capas** (Presentación, Lóg
 Si tienes el proyecto `ProductsService.IntegrationTests`, puedes ejecutar:
 
 ```bash
-dotnet test ProductsService.IntegrationTests
+docker compose-up
+dotnet test ProductsService.UnitTests
+dotnet test InventoryService.UnitTests
 ```
 
 ---
