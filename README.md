@@ -121,7 +121,7 @@ X-API-KEY: key_test_local
 Si tienes el proyecto `ProductsService.IntegrationTests`, puedes ejecutar:
 
 ```bash
-docker compose-up
+docker compose-up -d
 dotnet test ProductsService.UnitTests
 dotnet test InventoryService.UnitTests
 ```
