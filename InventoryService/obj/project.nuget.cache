@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1GdOzHj0t2g=",
+  "dgSpecHash": "kD+tQ/dIL3Q=",
   "success": true,
-  "projectFilePath": "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\Solucion\\InventoryService\\InventoryService.csproj",
+  "projectFilePath": "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\linktic_test_nervencid\\InventoryService\\InventoryService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nerve\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.5\\microsoft.aspnetcore.openapi.9.0.5.nupkg.sha512",
     "C:\\Users\\nerve\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
