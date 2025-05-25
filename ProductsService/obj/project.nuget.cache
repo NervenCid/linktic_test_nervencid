@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OzTxVKLsz4A=",
+  "dgSpecHash": "sJFqTKYT+Uw=",
   "success": true,
   "projectFilePath": "C:\\Users\\nerve\\Diego\\Programacion\\Entrevistas\\LinkTic\\linktic_test_nervencid\\ProductsService\\ProductsService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nerve\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
-    "C:\\Users\\nerve\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\9.0.5\\microsoft.aspnetcore.jsonpatch.9.0.5.nupkg.sha512",
-    "C:\\Users\\nerve\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.5\\microsoft.aspnetcore.openapi.9.0.5.nupkg.sha512",
+    "C:\\Users\\nerve\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.5\\microsoft.aspnetcore.jsonpatch.8.0.5.nupkg.sha512",
+    "C:\\Users\\nerve\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.5\\microsoft.aspnetcore.openapi.8.0.5.nupkg.sha512",
     "C:\\Users\\nerve\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\nerve\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\nerve\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",

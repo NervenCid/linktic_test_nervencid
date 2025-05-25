@@ -1,3 +1,5 @@
+using Microsoft.OpenApi.Models;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http.Json;
@@ -7,19 +9,30 @@ using InventoryService.Models;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+
+
+// ----------------------------
+// Configuración de servicios
+// ----------------------------
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Product Service API",
+        Version = "v1"
+    });
+});
 
 var app = builder.Build();
 
-const string productosApiBase = "http://localhost:5071"; // Cambia esto por la URL real
+var productosApiBase = Environment.GetEnvironmentVariable("PRODUCTS_API_BASE") ?? "http://localhost:5071"; // Cambia esto por la URL real
 
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

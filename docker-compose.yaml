@@ -15,3 +15,33 @@ services:
     ports:
       - "27017:27017"
 
+  # Servicio de Productos
+  products:
+    build:
+      context: ./ProductsService
+      dockerfile: Dockerfile
+    container_name: productos_service
+    ports:
+      - "5071:5071"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Mongo__ConnectionString=mongodb://mongo:27017
+      - ASPNETCORE_URLS=http://+:5071
+    depends_on:
+      - mongo
+
+  # Servicio de Inventario
+  inventory:
+    build:
+      context: ./InventoryService
+      dockerfile: Dockerfile
+    container_name: inventario_service
+    ports:
+      - "5117:5117"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5117
+      # Si el servicio de inventario necesita conectarse al de productos, usa la URL interna:
+      - PRODUCTS_API_BASE=http://products:5071
+    depends_on:
+      - products

@@ -14,7 +14,8 @@ BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard
 
 
 // Configuración de MongoDB
-var mongoClient = new MongoClient("mongodb://localhost:27017");
+var mongoConnectionString = Environment.GetEnvironmentVariable("Mongo__ConnectionString") ?? "mongodb://localhost:27017";
+var mongoClient = new MongoClient(mongoConnectionString);
 var database = mongoClient.GetDatabase("ProductsDb");
 var productsCollection = database.GetCollection<Product>("Products");
 
