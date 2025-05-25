@@ -6,6 +6,7 @@ C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\Pro
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\bin\Debug\net8.0\ProductsService.runtimeconfig.json
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\bin\Debug\net8.0\ProductsService.dll
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\bin\Debug\net8.0\ProductsService.pdb
+C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\bin\Debug\net8.0\ProductsService.xml
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\bin\Debug\net8.0\DnsClient.dll
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
@@ -40,6 +41,7 @@ C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\Pro
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\obj\Debug\net8.0\Products.8F655B71.Up2Date
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\obj\Debug\net8.0\ProductsService.dll
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\obj\Debug\net8.0\refint\ProductsService.dll
+C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\obj\Debug\net8.0\ProductsService.xml
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\obj\Debug\net8.0\ProductsService.pdb
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\obj\Debug\net8.0\ProductsService.genruntimeconfig.cache
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\ProductsService\obj\Debug\net8.0\ref\ProductsService.dll

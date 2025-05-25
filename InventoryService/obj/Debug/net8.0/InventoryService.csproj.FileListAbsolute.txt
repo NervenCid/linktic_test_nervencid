@@ -35,3 +35,5 @@ C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\Inv
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\InventoryService\obj\Debug\net8.0\InventoryService.pdb
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\InventoryService\obj\Debug\net8.0\InventoryService.genruntimeconfig.cache
 C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\InventoryService\obj\Debug\net8.0\ref\InventoryService.dll
+C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\InventoryService\bin\Debug\net8.0\InventoryService.xml
+C:\Users\nerve\Diego\Programacion\Entrevistas\LinkTic\linktic_test_nervencid\InventoryService\obj\Debug\net8.0\InventoryService.xml

@@ -16,7 +16,10 @@ namespace InventoryService.Controllers
                     return Results.NotFound();
 
                 return Results.Ok(new { Name = product.Name, Stock = product.Stock });
-            });
+            })
+            .WithName("GetProductStock")
+            .WithSummary("Consulta el stock disponible de un producto.")
+            .WithDescription("Obtiene la cantidad disponible en inventario de un producto específico por su identificador único (GUID). Retorna NotFound si el producto no existe.");
 
             app.MapPost("/buy/{id:guid}", async (Guid id, BuyRequest buyRequest, IInventoryRepository repository) =>
             {
@@ -34,7 +37,10 @@ namespace InventoryService.Controllers
                     return Results.StatusCode(500);
 
                 return Results.Ok(new { Name = product.Name, Stock = product.Stock });
-            });
+            })
+            .WithName("BuyProduct")
+            .WithSummary("Realiza una compra y actualiza el stock de un producto.")
+            .WithDescription("Descuenta la cantidad comprada del stock de un producto específico. Retorna error si no hay suficiente stock o si ocurre un problema al actualizar.");
         }
     }
 }
