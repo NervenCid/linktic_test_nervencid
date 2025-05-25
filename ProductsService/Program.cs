@@ -82,3 +82,6 @@ ProductsController.RegisterEndpoints(app);
 
 // Ejecutar la aplicación
 app.Run();
+
+// Permitimos las pruebas unitarias
+public partial class Program { }

@@ -63,3 +63,6 @@ InventoryController.RegisterEndpoints(app);
 
 // Ejecutamos
 app.Run();
+
+// Permitimos las pruebas unitarias
+public partial class Program { }
