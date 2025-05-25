@@ -1,12 +1,12 @@
-#Esto es un comentario
+# Esto es un comentario
 
-#Para ejecutar este archivo:
+# Para ejecutar este archivo:
 #   >docker-compose up
 
-#Definimos la version (En este caso '3' es OBLIGATORIO)
+# Definimos la versión (En este caso '3' es OBLIGATORIO)
 version: '3'
 
-#Definimos los servicios que vamos a utilizar
+# Definimos los servicios que vamos a utilizar
 services:
   # Servicio de NoSQL
   mongo:
@@ -24,10 +24,14 @@ services:
     ports:
       - "5071:5071"
     environment:
+      # Entorno de desarrollo para ASP.NET Core
       - ASPNETCORE_ENVIRONMENT=Development
+      # Cadena de conexión a MongoDB usando el nombre del servicio interno de Docker
       - Mongo__ConnectionString=mongodb://mongo:27017
+      # URL de escucha para el servicio de productos
       - ASPNETCORE_URLS=http://+:5071
-      - API_KEYS=key_test_docker
+      # API Keys válidas para autenticación
+      - API_KEYS=key_test_local
     depends_on:
       - mongo
 
@@ -40,9 +44,11 @@ services:
     ports:
       - "5117:5117"
     environment:
+      # Entorno de desarrollo para ASP.NET Core
       - ASPNETCORE_ENVIRONMENT=Development
+      # URL de escucha para el servicio de inventario
       - ASPNETCORE_URLS=http://+:5117
-      # Si el servicio de inventario necesita conectarse al de productos, usa la URL interna:
+      # URL interna para que el servicio de inventario consuma el de productos
       - PRODUCTS_API_BASE=http://products:5071
     depends_on:
       - products

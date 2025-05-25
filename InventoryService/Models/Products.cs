@@ -1,14 +1,19 @@
-//Este es el modelo del producto
+// Este es el modelo del producto
 namespace InventoryService.Models
 {
+    // Clase que representa un producto en el inventario
     public class Product
     {
-
+        // Identificador único del producto
         public Guid _id { get; set; } = Guid.NewGuid();
-        //public int Id { get; set; }
-        public string Name { get; set; } = "";
-        public double Price { get; set; }
-        public int Stock { get; set; }
 
+        // Nombre del producto
+        public string Name { get; set; } = "";
+
+        // Precio del producto
+        public double Price { get; set; }
+
+        // Cantidad disponible en stock
+        public int Stock { get; set; }
     }
 }
