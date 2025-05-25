@@ -114,6 +114,36 @@ Todos los endpoints requieren el header:
 ```
 X-API-KEY: key_test_local
 ```
+---
+
+## Pruebas de integración
+
+Si tienes el proyecto `ProductsService.IntegrationTests`, puedes ejecutar:
+
+```bash
+docker compose-up
+dotnet test ProductsService.UnitTests
+dotnet test InventoryService.UnitTests
+```
+
+---
+
+## Base de datos: MongoDB
+
+Ambos microservicios utilizan **MongoDB** como base de datos NoSQL para almacenar la información de productos y gestionar el inventario.
+
+- **ProductsService**: Guarda los productos en una colección de MongoDB.
+- **InventoryService**: Consulta y actualiza el stock de productos a través de ProductsService, que a su vez usa MongoDB.
+
+Puedes levantar MongoDB fácilmente con Docker Compose, o instalarlo localmente y configurar la cadena de conexión mediante la variable de entorno `Mongo__ConnectionString`.
+
+Se utilizo esta base de datos por los siguientes motivos:
+
+- **Escalabilidad:** MongoDB permite escalar horizontalmente de forma sencilla, ideal para microservicios que pueden crecer en volumen de datos.
+- **Modelo flexible:** Al ser NoSQL, puedes modificar la estructura de los documentos sin migraciones complejas, facilitando la evolución de los modelos de productos e inventario.
+- **Alto rendimiento:** Las operaciones de lectura y escritura son rápidas, lo que mejora la respuesta de los endpoints REST.
+- **Integración sencilla:** Existen drivers oficiales y soporte nativo en .NET, lo que simplifica la integración y el acceso a los datos.
+- **Ideal para microservicios:** Cada microservicio puede tener su propia base o colección, permitiendo independencia y desacoplamiento entre servicios.
 
 ---
 
@@ -153,21 +183,20 @@ El enfoque de responsabilidades y organización interna de cada microservicio un
 - **Modelos:**  
   Clases como `Product` y `BuyRequest` para estructurar los datos.
 
----
-
-**Resumen:**  
-
 Cada microservicio implementa una **arquitectura de capas** (Presentación, Lógica, Acceso a Datos/Integración, Modelos) de manera simple y clara, siguiendo buenas prácticas de separación de responsabilidades dentro del enfoque de microservicios.
 
-## Pruebas de integración
+---
 
-Si tienes el proyecto `ProductsService.IntegrationTests`, puedes ejecutar:
+## Propuesta de mejoras y escalabilidad futura
 
-```bash
-docker compose-up
-dotnet test ProductsService.UnitTests
-dotnet test InventoryService.UnitTests
-```
+- **Orquestación con Kubernetes:** Utilizar Kubernetes para gestionar el ciclo de vida, escalado y despliegue de los microservicios de forma eficiente.
+- **Autenticación y autorización avanzada:** Implementar OAuth2, JWT o integración con IdentityServer para una gestión de usuarios y permisos más robusta.
+- **Observabilidad:** Integrar herramientas de monitoreo, logging centralizado (como ELK, Grafana, Prometheus) y trazabilidad distribuida para facilitar el diagnóstico y la operación.
+- **Pruebas automatizadas:** Ampliar la cobertura de pruebas unitarias y de integración, e incorporar pruebas end-to-end (E2E) y pipelines CI/CD.
+- **Mensajería asíncrona:** Incorporar colas de mensajes (RabbitMQ, Kafka, Azure Service Bus) para desacoplar procesos y permitir operaciones asíncronas (por ejemplo, compras masivas o eventos de stock).
+- **Versionado de APIs:** Implementar versionado de endpoints para facilitar la evolución de los servicios sin afectar a los clientes existentes.
+- **Documentación dinámica:** Mejorar la documentación con ejemplos de uso, colecciones de Postman y generación automática de clientes.
+- **Seguridad avanzada:** Añadir validaciones adicionales, protección contra ataques comunes (rate limiting, CORS, CSRF) y auditoría de operaciones.
 
 ---
 
