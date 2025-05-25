@@ -129,4 +129,4 @@ dotnet test ProductsService.IntegrationTests
 
 ## Autor
 
-Diego (nerve)
+Diego Camilo Peña Ramírez
