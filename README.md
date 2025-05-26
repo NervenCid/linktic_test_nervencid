@@ -172,7 +172,7 @@ El enfoque de responsabilidades y organización interna de cada microservicio un
 - **Modelos:**  
   Clases como `Product` definen la estructura de los datos.
 
-![Diagrama de arquitectura](docs/arquitectura.svg)
+![Diagrama de arquitectura](https://raw.githubusercontent.com/NervenCid/linktic_test_nervencid/9e4d05027b755ae5d21d4e565cddfdad31d92d15/docs/Diagrama_arquitectura.svg)
 
 ### **InventoryService**
 - **Capa de Presentación:**  
