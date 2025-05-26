@@ -172,6 +172,7 @@ El enfoque de responsabilidades y organización interna de cada microservicio un
 - **Modelos:**  
   Clases como `Product` definen la estructura de los datos.
 
+![Diagrama de arquitectura](docs/arquitectura.svg)
 
 ### **InventoryService**
 - **Capa de Presentación:**  
